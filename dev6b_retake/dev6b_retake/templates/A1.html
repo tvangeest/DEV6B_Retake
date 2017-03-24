@@ -8,9 +8,14 @@
     useranswer = []
 
         function check() {
+
+
             html = "<div>"
             html += "<table><td><tr>";
-            html += "<h3>De juiste antwoorden zijn</h3>";
+            html += "<h3>The correct answers:</h3>";
+          
+
+
             answersdata.forEach(function (item) {
                 rightanswer[counter] = item.answer
                 counter++
@@ -20,17 +25,18 @@
 
             for (i = 0; i < 10; i++) {
                 ai = i + 1;
-                useranswer[i] = document.getElementById("a" + ai).value;
-                alert(useranswer[i]);
+                useranswer[i] = document.getElementById("answer" + ai).value;
             }
             html += "<tr>";
-            html += "<h3>Jouw antwoorden zijn</h3>";
+            html += "<h3>Your answers:</h3>";
 
 
             for (i = 0; i < 10; i++) {
                 html += "<ul><li>" + useranswer[i] + "</li></ul>"
+                
             }
             html += "</tr></td></table></div>";
+            
             document.getElementById("content").innerHTML = html;
         }
 </script>
@@ -40,11 +46,11 @@
         margin: 0;
       }
 
-      ul {
+      ul.first {
         list-style-type: none;
         margin: 0;
         padding: 0;
-        width: 25%;
+        width: 20%;
         background-color: #f1f1f1;
         position: fixed;
         height: 100%;
@@ -71,30 +77,30 @@
 </head>
 <body>
 
-  <ul>
+  <ul class="first">
     <li><a href="{{url_for('index')}}">Home</a></li>
     <li><a class ="active" href="{{url_for('a1')}}"> A1: a/an</a></li>
     <li><a href="{{url_for('a2')}}">A2: adjectives</a></li>
   </ul>
 
-  <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+  <div style="margin-left:20%;padding:1px 16px;height:1000px;">
 
-  <form class="" action="" name="form" onsubmit="return checkform()" method='post'>
+  <form class="" action="" name="form"  method='post' id="content">
     <div>
       <div>
-        <p>1. Billy has <input class="w3-input w3-border" type="text" name="answer1" required> elephant as a pet</p>
-        <p>2. Mandy is <input class="w3-input w3-border" type="text" name="answer2" required> pretty girl</p>
-        <p>3. I want <input class="w3-input w3-border" type="text" name="answer3" required> newspaper</p>
-        <p>4. Brook has <input class="w3-input w3-border" type="text" name="answer4" required> old bike</p>
-        <p>5. He's eating <input class="w3-input w3-border" type="text" name="answer5" required> sandwich</p>
-        <p>6. I am listening to <input class="w3-input w3-border" type="text" name="answer6" required> English CD</p>
-        <p>7. She has <input class="w3-input w3-border" type="text" name="answer7" required> exercise book in her bag</p>
-        <p>8. The dog is taking <input class="w3-input w3-border" type="text" name="answer8" required> dump</p>
-        <p>9. Andy is drinking <input class="w3-input w3-border" type="text" name="answer9" required> glass of lemonade </p>
-        <p>10. This driver is ... maniac<input class="w3-input w3-border" type="text" name="answer10" required></p>
+        <p>1. Billy has <input class="w3-input w3-border" type="text" id="answer1" required> elephant as a pet</p>
+        <p>2. Mandy is <input class="w3-input w3-border" type="text" id="answer2" required> pretty girl</p>
+        <p>3. I want <input class="w3-input w3-border" type="text" id="answer3" required> newspaper</p>
+        <p>4. Brook has <input class="w3-input w3-border" type="text" id="answer4" required> old bike</p>
+        <p>5. He's eating <input class="w3-input w3-border" type="text" id="answer5" required> sandwich</p>
+        <p>6. I am listening to <input class="w3-input w3-border" type="text" id="answer6" required> English CD</p>
+        <p>7. She has <input class="w3-input w3-border" type="text" id="answer7" required> exercise book in her bag</p>
+        <p>8. The dog is taking <input class="w3-input w3-border" type="text" id="answer8" required> dump</p>
+        <p>9. Andy is drinking <input class="w3-input w3-border" type="text" id="answer9" required> glass of lemonade </p>
+        <p>10. This driver is ... maniac<input class="w3-input w3-border" type="text" id="answer10" required></p>
       </div>
 
-      <input type="button" value="Submit" onclick="check(a1)" > 
+      <input type="button" value="Submit" onclick="check()" > 
       <input type="button" value="Cancel" onclick="window.location.href='/'" />
     </div>
   </form>

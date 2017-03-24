@@ -24,7 +24,7 @@ def a1():
 def a1answers():
     a = []
     query = "SELECT answer FROM a1;";
-    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="dev6")
+    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
     execute = db.cursor()
     execute.execute(query)
     answer = execute.fetchall()
