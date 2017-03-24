@@ -32,6 +32,9 @@
     <Compile Include="controller.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="model.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
