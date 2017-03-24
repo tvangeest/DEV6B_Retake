@@ -1,5 +1,39 @@
 ﻿<!DOCTYPE html>
 <html>
+<script type="text/javascript" src="a1answers.json"></script>
+<script type="text/javascript">
+
+    rightanswer = []
+    counter = 0
+    useranswer = []
+
+        function check() {
+            html = "<div>"
+            html += "<table><td><tr>";
+            html += "<h3>De juiste antwoorden zijn</h3>";
+            answersdata.forEach(function (item) {
+                rightanswer[counter] = item.answer
+                counter++
+                html += "<ul><li>" + item.answer + "</li></ul>"
+            });
+            html += "</tr>";
+
+            for (i = 0; i < 10; i++) {
+                ai = i + 1;
+                useranswer[i] = document.getElementById("a" + ai).value;
+                alert(useranswer[i]);
+            }
+            html += "<tr>";
+            html += "<h3>Jouw antwoorden zijn</h3>";
+
+
+            for (i = 0; i < 10; i++) {
+                html += "<ul><li>" + useranswer[i] + "</li></ul>"
+            }
+            html += "</tr></td></table></div>";
+            document.getElementById("content").innerHTML = html;
+        }
+</script>
 <head>
   <style>
       body {
@@ -60,7 +94,7 @@
         <p>10. This driver is ... maniac<input class="w3-input w3-border" type="text" name="answer10" required></p>
       </div>
 
-      <input type="button" onclick="check(a1)" value="Submit"> 
+      <input type="button" value="Submit" onclick="check(a1)" > 
       <input type="button" value="Cancel" onclick="window.location.href='/'" />
     </div>
   </form>

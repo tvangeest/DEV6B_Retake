@@ -4,7 +4,8 @@ It contains the definition of routes and views for the application.
 """
 
 from flask import Flask, url_for, render_template, json, jsonify
-from controller import *
+import mysql.connector
+
 app = Flask(__name__)
 
 # Make the WSGI interface available at the top level so wfastcgi can get it.
@@ -13,17 +14,17 @@ wsgi_app = app.wsgi_app
 
 @app.route('/')
 def index():
-    return Controller.index()
+    return render_template('index.html')
 
 @app.route('/a1', methods=['GET', 'POST'])
 def a1():
-    return Controller.a1()
+    return render_template('a1.html')
 
 @app.route('/a1answers.json')
 def a1answers():
     a = []
     query = "SELECT answer FROM a1;";
-    db = mysql.connector.connect(user="root", passwd="usbw", host="192.168.178.52",database="dev6")
+    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="dev6")
     execute = db.cursor()
     execute.execute(query)
     answer = execute.fetchall()
@@ -43,13 +44,13 @@ def a1answers():
 
 @app.route('/a2', methods=['GET', 'POST'])
 def a2():
-    return Controller.a2()
+    return render_template('a2.html')
 
 @app.route('/a2answers.json')
 def a2answers():
     a = []
     query = "SELECT answer FROM a2;";
-    db = mysql.connector.connect(user="root", passwd="usbw", host="192.168.178.52",database="tommyvg")
+    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
     execute = db.cursor()
     execute.execute(query)
     answer = execute.fetchall()
