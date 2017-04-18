@@ -2,6 +2,7 @@ import unittest, json
 from flask import *
 import unittest
 from app import app
+import mysql.connector
 
 class Test_unittests(unittest.TestCase):
     def setUp(self):
