@@ -32,13 +32,10 @@
     <Compile Include="controller.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="filetestFAILS.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="model.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="unittests.py">
+    <Compile Include="filetest.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
