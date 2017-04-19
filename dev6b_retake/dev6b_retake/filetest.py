@@ -28,6 +28,13 @@ class Test_unittests(unittest.TestCase):
         result = self.app.get('/a2answers.json')
         self.assertEqual(result.status_code,200)
 
+    def test_a1check(self):
+        result = self.app.get('a1answers.json')
+        self.assertGreaterEqual(len(json.loads(result.data[10:1])),1)
+
+    def test_a2check(self):
+        result = self.app.get('a2answers.json')
+        self.assertGreaterEqual(len(json.loads(result.data[10:1])),1)
 
 if __name__ == '__main__':
     unittest.main()
