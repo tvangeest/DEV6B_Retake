@@ -18,7 +18,7 @@ def index():
 
 @app.route('/a1', methods=['GET', 'POST'])
 def a1():
-    return render_template('a1.html')
+    return render_template('A1.html')
 
 @app.route('/a1answers.json')
 def a1answers():
@@ -44,7 +44,7 @@ def a1answers():
 
 @app.route('/a2', methods=['GET', 'POST'])
 def a2():
-    return render_template('a2.html')
+    return render_template('A2.html')
 
 @app.route('/a2answers.json')
 def a2answers():
