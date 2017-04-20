@@ -9,11 +9,11 @@ class Test_unittests(unittest.TestCase):
         self.app.testing = True
 
     def test_statusA1(self):
-        result = self.app.get('/A1')
+        result = self.app.get('/a1')
         self.assertEqual(result.status_code,200)
 
     def test_statusA2(self):
-        result = self.app.get('/A2')
+        result = self.app.get('/a2')
         self.assertEqual(result.status_code,200)
 
     def test_statusindex(self):
