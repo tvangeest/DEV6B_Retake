@@ -24,6 +24,14 @@ class Test_unittests(unittest.TestCase):
         result = self.app.get('/c2')
         self.assertEqual(result.status_code,200)
 
+    def test_statusW1(self):
+        result = self.app.get('/w1')
+        self.assertEqual(result.status_code,200)
+
+    def test_statusW2(self):
+        result = self.app.get('/w2')
+        self.assertEqual(result.status_code,200)
+
     def test_statusindex(self):
         result = self.app.get('/')
         self.assertEqual(result.status_code,200)
@@ -42,6 +50,14 @@ class Test_unittests(unittest.TestCase):
 
     def test_statusjsonc2(self):
         result = self.app.get('/c2answers.json')
+        self.assertEqual(result.status_code,200)
+
+    def test_statusjsonaw1(self):
+        result = self.app.get('/answersw1.json')
+        self.assertEqual(result.status_code,200)
+
+    def test_statusjsonw2(self):
+        result = self.app.get('/answersw2.json')
         self.assertEqual(result.status_code,200)
 
     def test_statuslogin(self):
@@ -90,6 +106,30 @@ class Test_unittests(unittest.TestCase):
             db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
             cursor = db.cursor()
             cursor.execute("SELECT answer FROM c2;")
+            check = False
+            if cursor.fetchone()[0] in result.data:
+                check = True
+            db.close()
+            self.assertTrue(check)
+
+    def test_JsonComparedWithDatabaseW1(self):
+ 
+            result = self.app.get("/answersw1.json")
+            db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
+            cursor = db.cursor()
+            cursor.execute("SELECT answer FROM w1;")
+            check = False
+            if cursor.fetchone()[0] in result.data:
+                check = True
+            db.close()
+            self.assertTrue(check)
+
+    def test_JsonComparedWithDatabaseW2(self):
+ 
+            result = self.app.get("/answersw2.json")
+            db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
+            cursor = db.cursor()
+            cursor.execute("SELECT answer FROM w2;")
             check = False
             if cursor.fetchone()[0] in result.data:
                 check = True
