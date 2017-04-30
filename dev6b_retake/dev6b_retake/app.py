@@ -12,6 +12,57 @@ app = Flask(__name__)
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
 
+@app.route('/w1', methods=['GET', 'POST'])
+def w1():
+    return render_template('w1.html')
+
+@app.route('/w2', methods=['GET', 'POST'])
+def w2():
+    return render_template('w2.html')
+
+@app.route('/answersw1.json')
+def jsoniz():
+    a = []
+    sql1 = "SELECT answer FROM w1;";
+    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="dev6")
+    execute = db.cursor()
+    execute.execute(sql1)
+    answer = execute.fetchall()
+    db.close()
+    print(answer)
+    collectionString = "answersdata=[{\n"
+    first = True;
+    for row in answer:
+
+        if (first == False):
+            collectionString += ",{\n"
+        else:
+            first = False;
+        collectionString += ("\t\"answer\":\"" + str(row[0]) + "\"}\n")
+    collectionString += "]"
+    return collectionString
+
+
+@app.route('/answersw2.json')
+def jsonize():
+    sql1 = "SELECT answer FROM w2;";
+    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="dev6")
+    execute = db.cursor()
+    execute.execute(sql1)
+    answer = execute.fetchall()
+    db.close()
+    print(answer)
+    collectionString = "answersdata=[{\n"
+    first = True;
+    for row in answer:
+
+        if (first == False):
+            collectionString += ",{\n"
+        else:
+            first = False;
+        collectionString += ("\t\"answer\":\"" + str(row[0]) + "\"}\n")
+    collectionString += "]"
+    return collectionString
 
 @app.route('/')
 def index():
@@ -95,6 +146,8 @@ def authenticator():
   else:
     db.close()
     return json.dumps({'status':'OK', 'username': username})
+
+
 
 if __name__ == '__main__':
     import os
