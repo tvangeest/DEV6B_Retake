@@ -1,6 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html>
-<script type="text/javascript" src="a1answers.json"></script>
+<script type="text/javascript" src="c2answers.json"></script>
 <script type="text/javascript">
 
     rightanswer = []
@@ -13,7 +14,7 @@
             html = "<div>"
             html += "<table><td><tr>";
             html += "<h3>The correct answers:</h3>";
-          
+
 
 
             answersdata.forEach(function (item) {
@@ -33,10 +34,10 @@
 
             for (i = 0; i < 10; i++) {
                 html += "<ul><li>" + useranswer[i] + "</li></ul>"
-                
+
             }
             html += "</tr></td></table></div>";
-            
+
             document.getElementById("content").innerHTML = html;
         }
 </script>
@@ -79,33 +80,33 @@
 
   <ul class="first">
     <li><a href="{{url_for('index')}}">Home</a></li>
-    <li><a class ="active" href="{{url_for('a1')}}"> A1: a/an</a></li>
+    <li><a href="{{url_for('a1')}}"> A1: a/an</a></li>
     <li><a href="{{url_for('a2')}}">A2: adjectives</a></li>
     <li><a href="{{url_for('c1')}}">C1: adjectives2</a></li>
-    <li><a href="{{url_for('c2')}}">C2: adjectives3</a></li>
+    <li><a class="active" href="{{url_for('c2')}}">C2: adjectives3</a></li>
   </ul>
 
   <div style="margin-left:20%;padding:1px 16px;height:1000px;">
 
-  <form class="" action="" name="form"  method='post' id="content">
-    <div>
+    <form class="" action="" name="form" method='post' id="content">
       <div>
-        <p>1. Billy has <input class="w3-input w3-border" type="text" id="answer1" required> elephant as a pet</p>
-        <p>2. Mandy is <input class="w3-input w3-border" type="text" id="answer2" required> pretty girl</p>
-        <p>3. I want <input class="w3-input w3-border" type="text" id="answer3" required> newspaper</p>
-        <p>4. Brook has <input class="w3-input w3-border" type="text" id="answer4" required> old bike</p>
-        <p>5. He's eating <input class="w3-input w3-border" type="text" id="answer5" required> sandwich</p>
-        <p>6. I am listening to <input class="w3-input w3-border" type="text" id="answer6" required> English CD</p>
-        <p>7. She has <input class="w3-input w3-border" type="text" id="answer7" required> exercise book in her bag</p>
-        <p>8. The dog is taking <input class="w3-input w3-border" type="text" id="answer8" required> dump</p>
-        <p>9. Andy is drinking <input class="w3-input w3-border" type="text" id="answer9" required> glass of lemonade </p>
-        <p>10. This driver is ... maniac<input class="w3-input w3-border" type="text" id="answer10" required></p>
-      </div>
+        <div>
+          <p>1. The bus driver was <input class="w3-input w3-border" type="text" id="answer1" required> injured.(serious)</p>
+          <p>2. Kevin is <input class="w3-input w3-border" type="text" id="answer2" required> clever.(extreme)</p>
+          <p>3. This hamburger tastes <input class="w3-input w3-border" type="text" id="answer3" required> .(awful)</p>
+          <p>4. Be <input class="w3-input w3-border" type="text" id="answer4" required> with this glass of milk.(careful)</p>
+          <p>5. Robin looks <input class="w3-input w3-border" type="text" id="answer5" required> . What's the matter with him?(sad)</p>
+          <p>6. Jack is <input class="w3-input w3-border" type="text" id="answer6" required> about losing his keys.(terrible)</p>
+          <p>7. This steak smells <input class="w3-input w3-border" type="text" id="answer7" required> .(good)</p>
+          <p>8. Our basketball team played <input class="w3-input w3-border" type="text" id="answer8" required> last friday.(bad)</p>
+          <p>9. Don't speak so <input class="w3-input w3-border" type="text" id="answer9" required> . I can't understand you.(fast)</p>
+          <p>10. Maria <input class="w3-input w3-border" type="text" id="answer10" required> opened her present.(slow)</p>
+        </div>
 
-      <input type="button" value="Submit" onclick="check()" > 
-      <input type="button" value="Cancel" onclick="window.location.href='/'" />
-    </div>
-  </form>
- </div>
+        <input type="button" value="Submit" onclick="check()">
+        <input type="button" value="Cancel" onclick="window.location.href='/'" />
+      </div>
+    </form>
+  </div>
 </body>
 </html>

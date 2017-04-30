@@ -124,6 +124,57 @@ def a2answers():
     collectionString += "]"
     return collectionString
 
+@app.route('/c1', methods=['GET', 'POST'])
+def c1():
+    return render_template('C1.html')
+
+@app.route('/c1answers.json')
+def c1answers():
+    a = []
+    query = "SELECT answer FROM c1;";
+    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
+    execute = db.cursor()
+    execute.execute(query)
+    answer = execute.fetchall()
+    db.close()
+    print(answer)
+    collectionString = "answersdata=[{\n"
+    first = True;
+    for row in answer:
+
+        if (first == False):
+            collectionString += ",{\n"
+        else:
+            first = False;
+        collectionString += ("\t\"answer\":\"" + str(row[0]) + "\"}\n")
+    collectionString += "]"
+    return collectionString
+
+@app.route('/c2', methods=['GET', 'POST'])
+def c2():
+    return render_template('C2.html')
+
+@app.route('/c2answers.json')
+def c2answers():
+    a = []
+    query = "SELECT answer FROM c2;";
+    db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
+    execute = db.cursor()
+    execute.execute(query)
+    answer = execute.fetchall()
+    db.close()
+    print(answer)
+    collectionString = "answersdata=[{\n"
+    first = True;
+    for row in answer:
+
+        if (first == False):
+            collectionString += ",{\n"
+        else:
+            first = False;
+        collectionString += ("\t\"answer\":\"" + str(row[0]) + "\"}\n")
+    collectionString += "]"
+    return collectionString
 
 @app.route("/loginauth",methods=["POST"])
 def authenticator():

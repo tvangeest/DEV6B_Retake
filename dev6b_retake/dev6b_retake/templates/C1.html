@@ -1,3 +1,112 @@
-﻿body
-{
-}
+﻿<!DOCTYPE html>
+
+<html>
+<script type="text/javascript" src="c1answers.json"></script>
+<script type="text/javascript">
+
+    rightanswer = []
+    counter = 0
+    useranswer = []
+
+        function check() {
+
+
+            html = "<div>"
+            html += "<table><td><tr>";
+            html += "<h3>The correct answers:</h3>";
+
+
+
+            answersdata.forEach(function (item) {
+                rightanswer[counter] = item.answer
+                counter++
+                html += "<ul><li>" + item.answer + "</li></ul>"
+            });
+            html += "</tr>";
+
+            for (i = 0; i < 10; i++) {
+                ai = i + 1;
+                useranswer[i] = document.getElementById("answer" + ai).value;
+            }
+            html += "<tr>";
+            html += "<h3>Your answers:</h3>";
+
+
+            for (i = 0; i < 10; i++) {
+                html += "<ul><li>" + useranswer[i] + "</li></ul>"
+
+            }
+            html += "</tr></td></table></div>";
+
+            document.getElementById("content").innerHTML = html;
+        }
+</script>
+<head>
+  <style>
+      body {
+        margin: 0;
+      }
+
+      ul.first {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 20%;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+      }
+
+      li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+
+        li a.active {
+          background-color: #4CAF50;
+          color: white;
+        }
+
+        li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+        }
+  </style>
+</head>
+<body>
+
+  <ul class="first">
+    <li><a href="{{url_for('index')}}">Home</a></li>
+    <li><a href="{{url_for('a1')}}"> A1: a/an</a></li>
+    <li><a href="{{url_for('a2')}}">A2: adjectives</a></li>
+    <li><a class="active" href="{{url_for('c1')}}">C1: adjectives2</a></li>
+    <li><a href="{{url_for('c2')}}">C2: adjectives3</a></li>
+  </ul>
+
+  <div style="margin-left:20%;padding:1px 16px;height:1000px;">
+
+    <form class="" action="" name="form" method='post' id="content">
+      <div>
+        <div>
+          <p>1. He <input class="w3-input w3-border" type="text" id="answer1" required> reads a book.(quick)</p>
+          <p>2. Mandy is a<input class="w3-input w3-border" type="text" id="answer2" required> girl.(pretty)</p>
+          <p>3. The class is <input class="w3-input w3-border" type="text" id="answer3" required> loud today.(terrible)</p>
+          <p>4. Max is a <input class="w3-input w3-border" type="text" id="answer4" required> singer.(good)</p>
+          <p>5. You can <input class="w3-input w3-border" type="text" id="answer5" required> open this tin.(easy)</p>
+          <p>6. It's a <input class="w3-input w3-border" type="text" id="answer6" required> day today.(terrible)</p>
+          <p>7. She sings the song <input class="w3-input w3-border" type="text" id="answer7" required> .(good)</p>
+          <p>8. He is a <input class="w3-input w3-border" type="text" id="answer8" required> driver.(careful)</p>
+          <p>9. He drives the car <input class="w3-input w3-border" type="text" id="answer9" required> .(careful)</p>
+          <p>10. The dog barks <input class="w3-input w3-border" type="text" id="answer10" required> .(loud)</p>
+        </div>
+
+        <input type="button" value="Submit" onclick="check()">
+        <input type="button" value="Cancel" onclick="window.location.href='/'" />
+      </div>
+    </form>
+  </div>
+</body>
+</html>
