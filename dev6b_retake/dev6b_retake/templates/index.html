@@ -55,7 +55,10 @@
       pages = "<ul class='first'>"
       pages += "<li><a class='active' href='{{url_for('index')}}'>Home</a></li>"
       pages += "<li><a href='{{url_for('a1')}}'> A1: a/an</a></li>"
-      pages += "<li><a href='{{url_for('a2')}}'>A2: adjectives</a></li></ul>"
+      pages += "<li><a href='{{url_for('w1')}}'>words 1</a></li>"
+      pages += "<li><a href='{{url_for('a2')}}'>A2: adjectives</a></li>"
+      pages += "<li><a href='{{url_for('w2')}}'>words 2</a></li></ul>"
+      
       pages += "<div id='welcome' style='margin-left:20%;padding:1px 16px;height:1000px;'><p>Welcome to our website, " + sessionStorage.getItem('username') + "</p></div>"
       document.getElementById("bodydiv").innerHTML = pages;
     }
