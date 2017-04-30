@@ -20,15 +20,15 @@ class Test_unittests(unittest.TestCase):
         result = self.app.get('/')
         self.assertEqual(result.status_code,200)
 
-    def test_jsona1(self):
+    def test_statusjsona1(self):
         result = self.app.get('/a1answers.json')
         self.assertEqual(result.status_code,200)
   
-    def test_jsona2(self):
+    def test_statusjsona2(self):
         result = self.app.get('/a2answers.json')
         self.assertEqual(result.status_code,200)
 
-    def test_loginpage(self):
+    def test_statuslogin(self):
         result = self.app.get('/login')
         self.assertEqual(result.status_code,200)
 
