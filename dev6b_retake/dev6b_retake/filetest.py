@@ -16,6 +16,14 @@ class Test_unittests(unittest.TestCase):
         result = self.app.get('/a2')
         self.assertEqual(result.status_code,200)
 
+    def test_statusC1(self):
+        result = self.app.get('/c1')
+        self.assertEqual(result.status_code,200)
+
+    def test_statusC2(self):
+        result = self.app.get('/c2')
+        self.assertEqual(result.status_code,200)
+
     def test_statusindex(self):
         result = self.app.get('/')
         self.assertEqual(result.status_code,200)
@@ -28,11 +36,19 @@ class Test_unittests(unittest.TestCase):
         result = self.app.get('/a2answers.json')
         self.assertEqual(result.status_code,200)
 
+    def test_statusjsonc1(self):
+        result = self.app.get('/c1answers.json')
+        self.assertEqual(result.status_code,200)
+
+    def test_statusjsonc2(self):
+        result = self.app.get('/c2answers.json')
+        self.assertEqual(result.status_code,200)
+
     def test_statuslogin(self):
         result = self.app.get('/login')
         self.assertEqual(result.status_code,200)
 
-    def test_JsonComparedWithDatabase(self):
+    def test_JsonComparedWithDatabaseA1(self):
  
             result = self.app.get("/a1answers.json")
             db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
@@ -44,12 +60,36 @@ class Test_unittests(unittest.TestCase):
             db.close()
             self.assertTrue(check)
 
-    def test_JsonComparedWithDatabase2(self):
+    def test_JsonComparedWithDatabaseA2(self):
  
             result = self.app.get("/a2answers.json")
             db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
             cursor = db.cursor()
             cursor.execute("SELECT answer FROM a2;")
+            check = False
+            if cursor.fetchone()[0] in result.data:
+                check = True
+            db.close()
+            self.assertTrue(check)
+
+    def test_JsonComparedWithDatabaseC1(self):
+ 
+            result = self.app.get("/c1answers.json")
+            db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
+            cursor = db.cursor()
+            cursor.execute("SELECT answer FROM c1;")
+            check = False
+            if cursor.fetchone()[0] in result.data:
+                check = True
+            db.close()
+            self.assertTrue(check)
+
+    def test_JsonComparedWithDatabaseC2(self):
+ 
+            result = self.app.get("/c2answers.json")
+            db = mysql.connector.connect(user="root", passwd="usbw", host="vvdsl2.xs4all.nl",database="tommyvg")
+            cursor = db.cursor()
+            cursor.execute("SELECT answer FROM c2;")
             check = False
             if cursor.fetchone()[0] in result.data:
                 check = True
