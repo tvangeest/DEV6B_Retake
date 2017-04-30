@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<title>Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<script type="text/javascript" src="answersw1.json"></script>
+<script type="text/javascript">
+
+    rightanswer = []
+    counter = 0
+    uanswer = []
+
+        function check() {
+            html = "<div>"
+            html += "<table><td><tr>";
+            html += "<h3>De juiste antwoorden zijn</h3>";
+            answersdata.forEach(function (item) {
+                rightanswer[counter] = item.answer
+                counter++
+                html += "<ul><li>" + item.answer + "</li></ul>"
+            });
+            html += "</tr>";
+
+            for (i = 0; i < 10; i++) {
+                ai = i + 1;
+                uanswer[i] = document.getElementById("a" + ai).value;
+            }
+            html += "<tr>";
+            html += "<h3>Jouw antwoorden zijn</h3>";
+
+
+            for (i = 0; i < 10; i++) {
+                html += "<ul><li>" + uanswer[i] + "</li></ul>";
+            }
+            html += "</tr></td></table></div>";
+
+
+
+
+            document.getElementById("content").innerHTML = html;
+        }
+</script>
+
+
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Lato", sans-serif;
+    }
+</style>
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
+            <a href="{{url_for('home')}}" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+            <a href="{{url_for('w1')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">A1: words 1</a>
+            <a href="{{url_for('ttev1')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">A2: tt enkelvoud 1</a>
+            <a href="{{url_for('w2')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">11: words 2</a>
+            <a href="{{url_for('ttev2')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">B2: tt enkelvoud 2</a>
+
+
+
+        </div>
+
+        <!-- First Grid -->
+        <div class="w3-row-padding w3-padding-64 w3-container">
+            <div class="w3-content">
+                <div class="w3-twothird" id="content">
+                    <h1>words 1</h1>
+
+                    name <input id="a1" /><br />
+                    age <input id="a2" /><br />
+                    family <input id="a3" /><br />
+                    brother <input id="a4" /><br />
+                    sister <input id="a5" /><br />
+                    dog <input id="a6" /><br />
+                    cat<input id="a7" /><br />
+                    library <input id="a8" /><br />
+                    book <input id="a9" /><br />
+                    farm<input id="a10" /><br />
+                    <input type="button" onclick="check()" value="Check your answers!">
+                    <input type="reset">
+                </div>
+            </div>
+        </div>
+
+
+
+
+</body>

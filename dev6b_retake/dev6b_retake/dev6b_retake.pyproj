@@ -49,6 +49,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\testfile.txt" />
+    <Content Include="templates\w1.html" />
+    <Content Include="templates\w2.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="templates\" />
