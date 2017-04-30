@@ -48,6 +48,7 @@
     <Content Include="templates\login.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="templates\testfile.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="templates\" />
