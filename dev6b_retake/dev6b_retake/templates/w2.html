@@ -1,21 +1,27 @@
 ﻿<!DOCTYPE html>
 <html>
+<head>
 <title>Website</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <script type="text/javascript" src="answersw2.json"></script>
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    rightanswer = []
-    counter = 0
-    uanswer = []
+        rightanswer = []
+        counter = 0
+        useranswer = []
 
         function check() {
-            html = "<div>"
+
+
+            html = "<div>";
             html += "<table><td><tr>";
-            html += "<h3>De juiste antwoorden zijn</h3>";
+            html += "<h3>The correct answers:</h3>";
+
+
+
             answersdata.forEach(function (item) {
                 rightanswer[counter] = item.answer
                 counter++
@@ -25,60 +31,84 @@
 
             for (i = 0; i < 10; i++) {
                 ai = i + 1;
-                uanswer[i] = document.getElementById("a" + ai).value;
-                alert(uanswer[i]);
+                useranswer[i] = document.getElementById("a" + ai).value;
             }
             html += "<tr>";
-            html += "<h3>Jouw antwoorden zijn</h3>";
+            html += "<h3>Your answers:</h3>";
 
 
             for (i = 0; i < 10; i++) {
-                html += "<ul><li>" + uanswer[i] + "</li></ul>"
+                html += "<ul><li>" + useranswer[i] + "</li></ul>"
+
             }
             html += "</tr></td></table></div>";
-
-
-
-
+            alert(html)
             document.getElementById("content").innerHTML = html;
         }
-</script>
+    </script>
 
 
 <style>
-    body, h1, h2, h3, h4, h5, h6 {
-        font-family: "Lato", sans-serif;
+    body {
+        margin: 0;
     }
+
+    ul.first {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 20%;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+    }
+
+    li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
 </style>
+</head>
+
 <body>
-
-    <!-- Navbar -->
-    <div class="w3-top">
-        <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
-            <a href="{{url_for('index')}}" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-            <a href="{{url_for('w1')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">A1: words 1</a>
-            <a href="{{url_for('w2')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">11: words 2</a>
-
-        </div>
+    <ul class="first">
+        <li><a href="{{url_for('index')}}">Home</a></li>
+        <li><a href="{{url_for('a1')}}"> A1: a/an</a></li>
+        <li><a href="{{url_for('w1')}}"> words1</a></li>
+        <li><a href="{{url_for('a2')}}">A2: adjectives</a></li>
+        <li><a href="{{url_for('w2')}}"> words2</a></li>
+    </ul>
 
         <!-- First Grid -->
         <div class="w3-row-padding w3-padding-64 w3-container">
             <div class="w3-content">
-                <div class="w3-twothird">
+                <div class="w3-twothird" id="content">
                     <h1>words 2</h1>
 
-                    car <input name="a1" /><br />
-                    aeroplane <input name="a2" /><br />
-                    train <input name="a3" /><br />
-                    taxi <input name="a4" /><br />
-                    bicycle <input name="a5" /><br />
-                    boat <input name="a6" /><br />
-                    house <input name="a7" /><br />
-                    door <input name="a8" /><br />
-                    window <input name="a9" /><br />
-                    stairs <input name="a10" /><br />
-                    <input type="button" onclick="check('w2')" value="Check your answers!">
-                    <input type="reset">
+                    car <input id="a1" /><br />
+                    aeroplane <input id="a2" /><br />
+                    train <input id="a3" /><br />
+                    taxi <input id="a4" /><br />
+                    bicycle <input id="a5" /><br />
+                    boat <input id="a6" /><br />
+                    house <input id="a7" /><br />
+                    door <input id="a8" /><br />
+                    window <input id="a9" /><br />
+                    stairs <input id="a10" /><br />
+                    <input type="button" onclick="check()" value="Check your answers!">
                 </div>
             </div>
         </div>
@@ -87,3 +117,4 @@
 
 
 </body>
+</html>
