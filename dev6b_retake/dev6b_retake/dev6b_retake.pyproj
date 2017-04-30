@@ -44,6 +44,10 @@
     <Content Include="templates\A1.html" />
     <Content Include="templates\A2.html" />
     <Content Include="templates\index.html" />
+    <Content Include="templates\login.css" />
+    <Content Include="templates\login.html">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="templates\" />

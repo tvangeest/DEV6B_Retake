@@ -33,19 +33,39 @@
           background-color: #555;
           color: white;
         }
+
+        li a.inlog {
+          background-color: #b6ff00;
+          color: white;
+        }
+
+        li a:hover:not(.inlog) {
+          background-color: #555;
+          color: white;
+        }
+
   </style>
+  
 </head>
 <body>
 
-  <ul class="first">
-    <li><a class="active" href="{{url_for('index')}}">Home</a></li>
-    <li><a href="{{url_for('a1')}}"> A1: a/an</a></li>
-    <li><a href="{{url_for('a2')}}">A2: adjectives</a></li>
-  </ul>
+  <div id="bodydiv">  
+  <script>
+    if ((sessionStorage.getItem('username')) != null) {
+      pages = "<ul class='first'>"
+      pages += "<li><a class='active' href='{{url_for('index')}}'>Home</a></li>"
+      pages += "<li><a href='{{url_for('a1')}}'> A1: a/an</a></li>"
+      pages += "<li><a href='{{url_for('a2')}}'>A2: adjectives</a></li></ul>"
+      pages += "<div id='welcome' style='margin-left:20%;padding:1px 16px;height:1000px;'><p>Welcome to our website, " + sessionStorage.getItem('username') + "</p></div>"
+      document.getElementById("bodydiv").innerHTML = pages;
+    }
+    else if ((sessionStorage.getItem('username')) == null) {
+      pages = "<ul class='first'>"
+      pages += "<li><a class='inlog' href='{{url_for('login')}}'>Login</a></li></ul>"
+      pages += "<div id='welcome' style='margin-left:20%;padding:1px 16px;height:1000px;'><p>Welcome to our website, anonymous user</p></div>"
+      document.getElementById("bodydiv").innerHTML = pages;
 
-  <div style="margin-left:20%;padding:1px 16px;height:1000px;">
-    <p>Welcome to our website</p>
-  </div>
-
+    }
+  </script>
 </body>
 </html>

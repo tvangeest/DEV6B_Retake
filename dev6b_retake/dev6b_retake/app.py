@@ -5,6 +5,7 @@ It contains the definition of routes and views for the application.
 
 from flask import Flask, url_for, render_template, json, jsonify
 import mysql.connector
+from flask import request
 
 app = Flask(__name__)
 
@@ -15,6 +16,10 @@ wsgi_app = app.wsgi_app
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 @app.route('/a1', methods=['GET', 'POST'])
 def a1():
@@ -67,6 +72,29 @@ def a2answers():
         collectionString += ("\t\"answer\":\"" + str(row[0]) + "\"}\n")
     collectionString += "]"
     return collectionString
+
+
+@app.route("/loginauth",methods=["POST"])
+def authenticator():
+  username = request.form["user"]
+  password = request.form["passw"]
+
+  #print(username, password)
+  db = mysql.connector.connect(user="root", passwd="usbw" , host="vvdsl2.xs4all.nl",database="tommyvg")
+  query = "SELECT uname FROM user WHERE uname = '" + username + "' AND upass = '" + password + "'"
+  executor = db.cursor()
+  executor.execute(query)
+  counter = 0
+  newusername = ""
+  for (user) in executor:
+     counter += 1
+     newusername = user
+  if (counter == 0):
+    db.close()
+    return json.dumps({'status':'No Way'})
+  else:
+    db.close()
+    return json.dumps({'status':'OK', 'username': username})
 
 if __name__ == '__main__':
     import os
