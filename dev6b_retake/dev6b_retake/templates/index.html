@@ -45,6 +45,14 @@
         }
 
   </style>
+  <script>
+
+      function logout() {
+          sessionStorage.removeItem('username');
+          location.reload();
+      }
+
+  </script>
   
 </head>
 <body>
@@ -59,14 +67,15 @@
       pages += "<li><a href='{{url_for('w1')}}'>B1: words1</a></li>"
       pages += "<li><a href='{{url_for('w2')}}'>B2: words2</a></li>"
       pages += "<li><a href='{{url_for('c1')}}'>C1: adjectives2</a></li>"
-      pages += "<li><a href='{{url_for('c2')}}'>C2: adjectives3</a></li></ul>"
+      pages += "<li><a href='{{url_for('c2')}}'>C2: adjectives3</a></li>"
+      pages += "<li><a href='javascript:logout();'>Logout</a></li></ul>"
       pages += "<div id='welcome' style='margin-left:20%;padding:1px 16px;height:1000px;'><p>Welcome to our website, " + sessionStorage.getItem('username') + "</p></div>"
       document.getElementById("bodydiv").innerHTML = pages;
     }
     else if ((sessionStorage.getItem('username')) == null) {
       pages = "<ul class='first'>"
       pages += "<li><a class='inlog' href='{{url_for('login')}}'>Login</a></li></ul>"
-      pages += "<div id='welcome' style='margin-left:20%;padding:1px 16px;height:1000px;'><p>Welcome to our website, anonymous user</p></div>"
+      pages += "<div id='welcome' style='margin-left:20%;padding:1px 16px;height:1000px;'><p>Welcome to our website, anonymous user. Please, log in.</p></div>"
       document.getElementById("bodydiv").innerHTML = pages;
 
     }
